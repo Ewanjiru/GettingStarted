@@ -1,0 +1,51 @@
+.header{
+	position: relative;
+    height: 60px;
+    background: #5F98CD;
+    .menuIcon {
+        position: absolute;
+        width: 29px;
+        height: 15px;
+        top: 23px;
+        left: 20px;
+        cursor: pointer;   
+        img{
+        	width: 100%
+        }   
+        }
+	.title {
+	         display: inline;
+	        text-align: center;
+	        line-height: 60px;
+	        color: #fff;
+	        font-weight: 600;
+	        font-size: 15px;
+	        margin-left: 30%;
+	      }
+	.searchField {
+			display: inline;
+			width:20%;  
+			border-radius: 17px;
+			margin-left: 30%;
+	    }
+	.searchIcon {
+		margin-left: 15%;
+		position: absolute;
+		z-index: 3;
+		font-size: 21px;
+		color: #FFFFFF;
+		top: 18px;
+		right: 20px;
+		-webkit-transition: all .3s ease;
+		transition: all .3s ease;
+		cursor: pointer;
+		&:hover {
+		  color: #fff;
+		}
+		img {
+
+			width: 15%;
+			height:30px;
+		}
+	}
+}
