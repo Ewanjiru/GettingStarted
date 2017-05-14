@@ -1,0 +1,25 @@
+.aside {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(3,169,244);
+    h3{
+    	text-align:cenetr;
+    	font-family:Arial;
+    	font-color: black;
+    }
+    .navbar{
+    	padding:2px 2px 2px 2px;
+    	background-color: #fff;
+
+    	ul{
+    		background-color: black;
+
+    		&hover{
+    		backgound-color: rgb(3,169,244);
+    	}
+    	}
+
+    }
+
+    }
