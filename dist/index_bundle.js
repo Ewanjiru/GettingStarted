@@ -10018,7 +10018,7 @@ var Content = function (_React$Component) {
 
 			// Make HTTP reques with Axios
 
-			axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=14ddece6f2294cbfada7f4d14d46d364').then(function (articlesResponse) {
+			axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&category=sports&apiKey=14ddece6f2294cbfada7f4d14d46d364').then(function (articlesResponse) {
 				// Set state with result 
 				_this2.setState({
 					articles: articlesResponse.data.articles
@@ -10174,7 +10174,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, ".content {\n  position: relative;\n  height: 100%;\n  overflow: hidden; }\n  .content .line {\n    position: absolute;\n    top: 0;\n    left: 40px;\n    bottom: 0;\n    width: 3px;\n    background: #EBEBEB; }\n  .content .item {\n    position: inline;\n    z-index: 2;\n    margin: 20px 30px 30px 70px;\n    display: inline-block; }\n    .content .item:hover {\n      color: #5F98CD;\n      cursor: pointer; }\n  .content .avatar {\n    position: absolute;\n    height: 40px;\n    width: 40px;\n    display: inline-block;\n    vertical-align: top;\n    overflow: hidden;\n    left: -49px; }\n    .content .avatar img {\n      width: 100%;\n      -webkit-border-radius: 50%;\n      -moz-border-radius: 50%;\n      -ms-border-radius: 50%;\n      -o-border-radius: 50%;\n      border-radius: 50%;\n      position: relative; }\n  .content .time {\n    display: block;\n    font-size: 11px;\n    line-height: 11px;\n    margin-bottom: 2px; }\n  .content .commentCount {\n    position: absolute;\n    right: 15px;\n    font-size: 12px;\n    top: 11px; }\n    .content .commentCount:after {\n      content: \"\\F075\";\n      font-family: FontAwesome;\n      position: absolute;\n      font-size: 20px;\n      color: #EBEBEB;\n      top: -50%;\n      left: 100%;\n      margin-left: 10px;\n      z-index: 3; }\n    .content .commentCount:hover:after {\n      color: lightblue; }\n", ""]);
+exports.push([module.i, ".content {\n  position: relative;\n  height: 100%;\n  overflow: hidden; }\n  .content .line {\n    position: absolute;\n    top: 0;\n    left: 40px;\n    bottom: 0;\n    width: 3px;\n    background: #EBEBEB; }\n  .content .item {\n    position: inline;\n    z-index: 2;\n    margin: 20px 30px 30px 70px;\n    display: inline-block; }\n    .content .item:hover {\n      color: #5F98CD;\n      cursor: pointer; }\n", ""]);
 
 // exports
 

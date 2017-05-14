@@ -1,29 +1,31 @@
 import React from "react";
 import './Content.scss';
-import newsStore from './../../stores/NewsStore';
-
 export default class Content extends React.Component {
 
-	getInitialState(){
-		return(
-				articles: newsStore.getArticles
-			)
+	constructor(props) {
+		// Pass props to parent class
+		super(props);
+		// Set initial state
+		this.state = {
+			articles:[]
+		}
 	}
-	
-	componentDidMount(){
-		newsStore.addChangeListener(this._onChange);
-	}	
+					
+		// Lifecycle method		
+	componentWillMount() {
+			// Make HTTP reques with Axios
+		 
+			axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&category=sports&apiKey=14ddece6f2294cbfada7f4d14d46d364')
+				.then( (articlesResponse) => {  
+					 // Set state with result 
+					this.setState({ 
+						articles: articlesResponse.data.articles
+					 })
+				})
+				.catch(error => console.log(error))
+		
+	}
 
-	componentWillUnmount(){
-		newsStore.removeChangeListener(this._onChange);
-	}	
-
-	_onChange(){
-		this.setState({
-			articles: newsStore.getArticles
-		})
-	}	
-	
 	//display a div having the articles' headlines,url,author and descriptions
 	render() {
 		const articles = this.state.articles;
