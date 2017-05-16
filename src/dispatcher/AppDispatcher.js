@@ -1,12 +1,5 @@
 import { Dispatcher } from 'flux';
 
-export default class AppDispatcher extends Dispatcher{
+const AppDispatcher = new Dispatcher();
 
-	handleAction(action){
-		this.dispatch({
-			source: 'GET_CATEGORY',
-			action: 'action',
-		});
-	}
-	
-}
+export default AppDispatcher;

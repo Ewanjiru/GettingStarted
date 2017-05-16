@@ -1,17 +1,38 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import appConstants from '../constants/AppConstants';
 
+export default {
+	getHeadlines: (category = '') => {
+		axios.get('https://newsapi.org/v1/sources?language=en&category=' + category)
+			.then((articlesResponse) => {
+				AppDispatcher.dispatch({
+					actionType: appConstants.GET_CATEGORY,
+					data: articlesResponse.data.sources
+				});
+			})
+			.catch(message => {
+				AppDispatcher.dispatch({
+					actionType: appConstants.GET_HEADLINES_ERROR,
+					message: message
+				});
+			});
+	},
 
-export function getHeadlines(category) {
-	axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&category='+{category}+'&apiKey=14ddece6f2294cbfada7f4d14d46d364')
-		.then( (articlesResponse) => {  
+	returnSources: () => {
+		axios.get('https://newsapi.org/v1/sources')
+			.then((sourcesResponse) => {
+				AppDispatcher.dispatch({
+					actionType: appConstants.GET_SOURCES,
+					data: sourcesResponse.data.sources
+				});
+			});
+	},
+	showSelected: (category) => {
+		let selected = category
+		AppDispatcher.dispatch({
+			actionType: appConstants.GET_SELECTED,
+			data: selected
+		});
+	}
 
-			articles: articlesResponse.data.articles	
-		})
-		.catch(error => console.log(error))
-
-		AppDispatcher.handleAction({
-		actionType : appConstants.GET_CATEGORY,
-		data: articles
-	})
 }

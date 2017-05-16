@@ -2,23 +2,15 @@
     position: relative;
     height: 100%;
     overflow: hidden;
-    .line {
-      position: absolute;
-      top: 0;
-      left: 40px;
-      bottom: 0;
-      width: 3px;
-      background: #EBEBEB;
-    }
+    margin-top: 20%;
     .item {
-      position:inline;
-      z-index: 2;
+      float: right;
       margin: 20px 30px 30px 70px;
-      display: inline-block;
+      display: inline;
+      border: 4px black;
       &:hover {
         color: #5F98CD;
         cursor: pointer;
       }
-
     }
 }

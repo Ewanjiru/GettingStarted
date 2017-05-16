@@ -1,36 +1,73 @@
 import AppDispatcher from './../dispatcher/AppDispatcher';
-import appConstants from './../constants/appConstants';
-import objectAssign from 'Object-assign';  
+import appConstants from './../constants/AppConstants';
 import { EventEmitter } from 'events';
 
-
-var _store = {
-	articles:[]
+const CHANGE_EVENT = 'change';
+let selected = null;
+const _store = {
+	articles: [],
+	sources: []
 };
- 	
-   
-const newsStore = objectAssign({}, EventEmitter.prototype,{
-  addChangeListener(cb){
-  	this.on('change',cb);
-  },
 
-  removeChangeListener(cb){
-  	this.removeListener('change',cb)
-  },
+function setSelected(category) {
+	selected = category;
+}
 
-  getArticles(){
-  	return _store.articles
-  },
-})
+class NewsStore extends EventEmitter {
 
+	emitChange() {
+		this.emit(CHANGE_EVENT);
+	}
 
-AppDispatcher.register((payload)=>{
-	let action = payload.action
+	addListener(callback) {
+		this.on(CHANGE_EVENT, callback);
+	}
 
-	switch(action.actionType){
+	removeListener(callback) {
+		this.removeListener(CHANGE_EVENT, callback)
+	}
+
+	getArticles() {
+		return _store.articles
+	}
+
+	setArticles(articles) {
+		_store.articles = articles;
+	}
+
+	getSelected() {
+		return selected
+	}
+
+	getSources() {
+		return _store.sources
+	}
+
+	setSources(source) {
+		_store.sources = source
+	}
+}
+
+const newsStore = new NewsStore();
+
+newsStore.dispatchToken = AppDispatcher.register(action => {
+
+	switch (action.actionType) {
 		case appConstants.GET_CATEGORY:
-			this.articles = action.articles;
-			this.emit('change');
+			newsStore.setArticles(action.data);
+			newsStore.emitChange();
+			break;
+		case appConstants.GET_HEADLINES_ERROR:
+			alert(action.message);
+			newsStore.emitChange();
+			break;
+		case appConstants.GET_SOURCES:
+			newsStore.setSources(action.data);
+			newsStore.emitChange();
+			break;
+		case appConstants.GET_SELECTED:
+			setSelected(action.category)
+			newsStore.emitChange();
 			break;
 
 		default:
@@ -40,6 +77,6 @@ AppDispatcher.register((payload)=>{
 
 });
 
-module.exports = newsStore;
+export default newsStore;
 
-  
+

@@ -1,5 +1,8 @@
-const appConstants = {  
-  GET_CATEGORY: "GET_CATEGORY",
-};
+import keyMirror from 'keymirror';
 
-export default appConstants; 
+export default keyMirror({
+  GET_CATEGORY: null,
+  GET_HEADLINES_ERROR: null,
+  GET_SOURCES: null,
+  GET_SELECTED: null,
+});
