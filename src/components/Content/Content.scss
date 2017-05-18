@@ -2,15 +2,13 @@
     position: relative;
     height: 100%;
     overflow: hidden;
-    margin-top: 20%;
+    margin-top: 2%;
+    border: 4px black;
     .item {
-      float: right;
-      margin: 20px 30px 30px 70px;
+      padding: 20px 30px 30px 10px;
       display: inline;
-      border: 4px black;
       &:hover {
         color: #5F98CD;
-        cursor: pointer;
       }
     }
 }

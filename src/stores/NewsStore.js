@@ -3,15 +3,12 @@ import appConstants from './../constants/AppConstants';
 import { EventEmitter } from 'events';
 
 const CHANGE_EVENT = 'change';
-let selected = null;
 const _store = {
 	articles: [],
-	sources: []
+	sources: [],
+	selectedSource: 'the-next-web',
+	sortby: 'top'
 };
-
-function setSelected(category) {
-	selected = category;
-}
 
 class NewsStore extends EventEmitter {
 
@@ -26,7 +23,13 @@ class NewsStore extends EventEmitter {
 	removeListener(callback) {
 		this.removeListener(CHANGE_EVENT, callback)
 	}
+	getSources() {
+		return _store.sources
+	}
 
+	setSources(source) {
+		_store.sources = source
+	}
 	getArticles() {
 		return _store.articles
 	}
@@ -35,16 +38,20 @@ class NewsStore extends EventEmitter {
 		_store.articles = articles;
 	}
 
-	getSelected() {
-		return selected
+	getSelectedSource() {
+		return _store.selectedSource
 	}
 
-	getSources() {
-		return _store.sources
+	setSelectedSource(source) {
+		_store.selectedSource = source
 	}
 
-	setSources(source) {
-		_store.sources = source
+	getSelectedSortBy() {
+		return _store.selectedSource
+	}
+
+	setSelectedSortBy(source) {
+		_store.selectedSource = source
 	}
 }
 
@@ -53,7 +60,7 @@ const newsStore = new NewsStore();
 newsStore.dispatchToken = AppDispatcher.register(action => {
 
 	switch (action.actionType) {
-		case appConstants.GET_CATEGORY:
+		case appConstants.LOAD_HEADLINES:
 			newsStore.setArticles(action.data);
 			newsStore.emitChange();
 			break;
@@ -65,8 +72,8 @@ newsStore.dispatchToken = AppDispatcher.register(action => {
 			newsStore.setSources(action.data);
 			newsStore.emitChange();
 			break;
-		case appConstants.GET_SELECTED:
-			setSelected(action.category)
+		case appConstants.UPDATE_SOURCE:
+			newsStore.setSelectedSource(action.data)
 			newsStore.emitChange();
 			break;
 

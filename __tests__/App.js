@@ -1,16 +1,15 @@
 import React from "react";
-import {shallow} from "enzyme";
+import { shallow } from "enzyme";
 import App from '../src/containers/App';
 
-describe("Timeline App", () =>{
-	it("wraps the content under a div with .notificationsFrame class", () =>{
-		let wrapper = shallow(<App/>);
+describe("NewsApp", () => {
+	it("wraps the content under a div with .main-frame class", () => {
+		let wrapper = shallow(<App />);
 		const divs = wrapper.find('div');
-		expect(divs.length).toBeGreaterThan(1);
-		expect(divs.length).toBe(2);
+		expect(divs.length).toEqual(1);
 
-		const notificationsDiv= wrapper.find('.notifications-frame');
+		const notificationsDiv = wrapper.find('.main-frame');
 		expect(notificationsDiv.length).toBe(1);
-		
+
 	});
 });

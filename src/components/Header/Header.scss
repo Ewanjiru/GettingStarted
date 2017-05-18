@@ -1,43 +1,45 @@
 .header{
-	position: relative;
-    height: 60px;
+		position: relative;
+    height: 150px;
     background-color: rgb(3,169,244);
-    .menuIcon {
+		border-radius: 17px;
+	.logo{
+		height: 80%;
+		width: 200px;
+		padding-top: 1.5px;
+	}	
+	.title {
+	        display: inline;
+	        text-align: center;
+	        color: #fff;
+	        font-weight: 600;
+	        font-size: 45px;
+	      }
+.menuIcon {
         position: absolute;
         width: 29px;
         height: 15px;
         top: 23px;
         left: 20px;
         cursor: pointer;   
+				 margin-left: 90%;
         img{
         	width: 100%
         }   
-        }
-	.title {
-	         display: inline;
-	        text-align: center;
-	        line-height: 60px;
-	        color: #fff;
-	        font-weight: 600;
-	        font-size: 15px;
-	        margin-left: 30%;
-	      }
+        }		
 	.searchField {
 			display: inline;
 			width:20%;  
 			border-radius: 17px;
-			margin-left: 30%;
+			margin-left: 25%;
 	    }
 	.searchIcon {
 		margin-left: 15%;
 		position: absolute;
-		z-index: 3;
 		font-size: 21px;
 		color: #FFFFFF;
 		top: 18px;
 		right: 20px;
-		-webkit-transition: all .3s ease;
-		transition: all .3s ease;
 		cursor: pointer;
 		&:hover {
 		  color: #fff;
