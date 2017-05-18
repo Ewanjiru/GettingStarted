@@ -15,13 +15,12 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="googleLogin">
         <GoogleLogin socialId="868328857754-msrf0blht1sr8nrsorh2da2b1aiv7umq.apps.googleusercontent.com"
           class="google-login"
           scope="profile"
           responseHandler={this.responseGoogle}
           buttonText="Login With Google" />
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
       </div>
     );
   }

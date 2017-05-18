@@ -47,7 +47,7 @@ class NewsStore extends EventEmitter {
 	}
 
 	getSelectedSortBy() {
-		return _store.selectedSource
+		return _store.sortby
 	}
 
 	setSelectedSortBy(source) {

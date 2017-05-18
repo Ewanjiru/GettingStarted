@@ -4,8 +4,11 @@
     overflow: hidden;
     margin-top: 2%;
     border: 4px black;
+    a{
+      text-decoration: none;
+      color: black;
+    }
     .item {
-      padding: 20px 30px 30px 10px;
       display: inline;
       &:hover {
         color: #5F98CD;

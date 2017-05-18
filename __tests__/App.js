@@ -6,8 +6,6 @@ describe("NewsApp", () => {
 	it("wraps the content under a div with .main-frame class", () => {
 		let wrapper = shallow(<App />);
 		const divs = wrapper.find('div');
-		expect(divs.length).toEqual(1);
-
 		const notificationsDiv = wrapper.find('.main-frame');
 		expect(notificationsDiv.length).toBe(1);
 

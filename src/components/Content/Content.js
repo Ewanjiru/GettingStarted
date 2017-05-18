@@ -47,7 +47,6 @@ export default class Content extends React.Component {
 	//display a div having the articles' headlines,url,author and descriptions
 	render() {
 		const { filteredArticles } = this.state;
-		//console.log(this.state.source);
 		return (
 			<div className="container">
 				<Sidebar
@@ -56,14 +55,17 @@ export default class Content extends React.Component {
 				<div className="content">
 					{
 						filteredArticles.map((headline, index) => {
+							const date = new Date(headline.publishedAt).toString()
+							let author = headline.author
+							if (author == null) {
+								author = this.state.source
+							}
 							return (
-								<div className="item" id={index} key={index}>
+								<a target="_blank" href={headline.url}><div className="item" id={index} key={index}>
 									<h3>{headline.title}</h3>
 									<p>{headline.description}</p>
-									<h5>{headline.publishedAt}</h5>
-									<h5>By:{headline.author}</h5>
-									<p><a target="_blank" href={headline.url}>Read Article</a></p>
-								</div>
+									<h5>{date}</h5><h5>By:{author}</h5>
+								</div></a>
 							);
 						})}
 				</div>
