@@ -31,7 +31,6 @@ export default class Header extends React.Component {
     this.setState({
       sortSourceby: newsStore.getSelectedSortBy(),
     });
-
   }
 
   render() {

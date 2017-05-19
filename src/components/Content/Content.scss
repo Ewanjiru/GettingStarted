@@ -4,12 +4,16 @@
     overflow: hidden;
     margin-top: 2%;
     border: 4px black;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
     a{
       text-decoration: none;
       color: black;
     }
     .item {
-      display: inline;
+      flex: 2 1 60%;
+      margin: 10px;
       &:hover {
         color: #5F98CD;
       }

@@ -6,4 +6,6 @@ export default keyMirror({
   LOAD_HEADLINES: null,
   GET_SOURCES: null,
   UPDATE_SOURCE: null,
+  GET_SORTBYS: null,
+  UPDATE_ARTICLE_SORT: null,
 });

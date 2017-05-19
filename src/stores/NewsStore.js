@@ -6,8 +6,9 @@ const CHANGE_EVENT = 'change';
 const _store = {
 	articles: [],
 	sources: [],
+	sourceSortBys: ['latest'],
 	selectedSource: 'the-next-web',
-	sortby: 'top'
+	currentArticleSort:'top'
 };
 
 class NewsStore extends EventEmitter {
@@ -46,6 +47,22 @@ class NewsStore extends EventEmitter {
 		_store.selectedSource = source
 	}
 
+	getSourceSortbys() {
+		return _store.sourceSortBys;
+	}
+
+	setSourceSortbys(sortBys) {
+		_store.sourceSortBys = sortBys
+	}
+
+		getSelectedDropDownSort() {
+		return _store.currentArticleSort;
+	}
+
+	setSelectedDropDownSort(currentArticleSort) {
+		_store.currentArticleSort = currentArticleSort
+	}
+
 	getSelectedSortBy() {
 		return _store.sortby
 	}
@@ -58,7 +75,7 @@ class NewsStore extends EventEmitter {
 const newsStore = new NewsStore();
 
 newsStore.dispatchToken = AppDispatcher.register(action => {
-
+	
 	switch (action.actionType) {
 		case appConstants.LOAD_HEADLINES:
 			newsStore.setArticles(action.data);
@@ -72,14 +89,20 @@ newsStore.dispatchToken = AppDispatcher.register(action => {
 			newsStore.setSources(action.data);
 			newsStore.emitChange();
 			break;
+		case appConstants.GET_SORTBYS:
+			newsStore.setSourceSortbys(action.data);
+			newsStore.emitChange();
+			break;
 		case appConstants.UPDATE_SOURCE:
 			newsStore.setSelectedSource(action.data)
 			newsStore.emitChange();
 			break;
-
+		case appConstants.UPDATE_ARTICLE_SORT:
+			newsStore.setSelectedDropDownSort(action.data)
+			newsStore.emitChange();
+			break;
 		default:
 			return true
-
 	}
 
 });

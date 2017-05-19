@@ -1,7 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import appConstants from '../constants/AppConstants';
-const googleid = "868328857754-msrf0blht1sr8nrsorh2da2b1aiv7umq.apps.googleusercontent.com"
-const secretkey = "aPQ0cLcGQkWEVz_KmL-BGq0E"
 export default {
 	//loads by default latest articles from The next web
 	loadHeadlines: () => {
@@ -20,7 +18,8 @@ export default {
 			});
 	},
 	onclickGetHeadlines: (source) => {
-		axios.get('https://newsapi.org/v1/articles?source=' + source + '&apiKey=14ddece6f2294cbfada7f4d14d46d364')
+		let url = 'https://newsapi.org/v1/articles?source=' + source + '&apiKey=14ddece6f2294cbfada7f4d14d46d364';
+		axios.get(url)
 			.then((articlesResponse) => {
 				AppDispatcher.dispatch({
 					actionType: appConstants.LOAD_HEADLINES,
@@ -50,6 +49,30 @@ export default {
 					data: sourcesResponse.data.sources,
 				});
 			});
+	},
+
+	sortOptions: (sourcesortby) => {
+		AppDispatcher.dispatch({
+			actionType: appConstants.GET_SORTBYS,
+			data: sourcesortby
+		});
+	},
+
+	loadSortByArticles:(source,sortBy)=>{
+				axios.get('https://newsapi.org/v1/articles?source=' + source + '&sortBy='+sortBy+'&apiKey=14ddece6f2294cbfada7f4d14d46d364')
+			.then((articlesResponse) => {
+				AppDispatcher.dispatch({
+					actionType: appConstants.LOAD_HEADLINES,
+					data: articlesResponse.data.articles
+				});
+			})
+	},
+
+		onclickUpdateArticleSort: (articleSortBy) => {
+		AppDispatcher.dispatch({
+			actionType: appConstants.UPDATE_ARTICLE_SORT,
+			data: articleSortBy
+		});
 	},
 
 	returnSortbySources: (category) => {
