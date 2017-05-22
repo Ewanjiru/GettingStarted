@@ -3,7 +3,7 @@ import appConstants from '../constants/AppConstants';
 export default {
 	//loads by default latest articles from The next web
 	loadHeadlines: () => {
-		axios.get('https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=14ddece6f2294cbfada7f4d14d46d364')
+		axios.get('https://newsapi.org/v1/articles?source=the-next-web&apiKey=14ddece6f2294cbfada7f4d14d46d364')
 			.then((articlesResponse) => {
 				AppDispatcher.dispatch({
 					actionType: appConstants.LOAD_HEADLINES,
@@ -17,6 +17,7 @@ export default {
 				});
 			});
 	},
+	
 	onclickGetHeadlines: (source) => {
 		let url = 'https://newsapi.org/v1/articles?source=' + source + '&apiKey=14ddece6f2294cbfada7f4d14d46d364';
 		axios.get(url)
@@ -90,5 +91,12 @@ export default {
 				});
 			});
 	},
+
+	searchSource(input){
+		AppDispatcher.dispatch({
+			actionType: appConstants.UPDATE_SEARCH,
+			data: input
+		});
+	}
 
 }

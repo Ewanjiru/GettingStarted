@@ -8,4 +8,5 @@ export default keyMirror({
   UPDATE_SOURCE: null,
   GET_SORTBYS: null,
   UPDATE_ARTICLE_SORT: null,
+  UPDATE_SEARCH: null,
 });

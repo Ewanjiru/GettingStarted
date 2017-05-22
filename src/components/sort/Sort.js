@@ -13,12 +13,15 @@ export default class Header extends React.Component {
     this._onChange = this._onChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   componentDidMount() {
     newsStore.addListener(this._onChange);
   }
+
   componentWillUnmount() {
     newsStore.removeListener(this._onChange);
   }
+  
   handleChange(evt) {
     const sortedBy = evt.target.value
     this.setState({

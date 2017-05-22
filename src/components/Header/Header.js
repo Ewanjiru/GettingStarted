@@ -4,7 +4,6 @@ import newsStore from './../../stores/NewsStore';
 import NewsActions from './../../actions/NewsActions';
 import Login from '../Login/Login.js';
 
-
 export default class Header extends React.Component {
 	render() {
 		return (
